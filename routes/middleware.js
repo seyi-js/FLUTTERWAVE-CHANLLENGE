@@ -1,5 +1,8 @@
 const {validateData,validateField} =require('./helper')
 exports.validateEndpoint = async ( req, res, next ) => {
+
+    
+
     const { rule, data } = req.body;
     //Validate if present
     if ( !rule ) {
@@ -9,6 +12,15 @@ exports.validateEndpoint = async ( req, res, next ) => {
             "data": null
         } );
     };
+
+    if ( !rule.field || !rule.condition || !rule.condition_value ) {
+        return res.status( 400 ).json( {
+            "message": "Invalid JSON payload passed.",
+            "status": "error",
+            "data": null
+        })
+    }
+
     if ( !data ) {
         return res.json( {
             "message": "data is required.",
@@ -141,3 +153,5 @@ exports.getDataFromRequest = ( req, res, next ) => {
     }
     
 };
+
+
