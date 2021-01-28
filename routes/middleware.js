@@ -13,13 +13,28 @@ exports.validateEndpoint = async ( req, res, next ) => {
         } );
     };
 
-    if ( !rule.field || !rule.condition || !rule.condition_value ) {
+    if ( !rule.field) {
         return res.status( 400 ).json( {
-            "message": "Invalid JSON payload passed.",
+            "message": "rule.field is required.",
             "status": "error",
             "data": null
-        })
+        } );
     }
+    if (  !rule.condition) {
+        return res.status( 400 ).json( {
+            "message": "rule.condition is required.",
+            "status": "error",
+            "data": null
+        } );
+    }
+    if ( !rule.condition_value ) {
+        return res.status( 400 ).json( {
+            "message": "rule.condition_value is required.",
+            "status": "error",
+            "data": null
+        } );
+    }
+
 
     if ( !data ) {
         return res.json( {
