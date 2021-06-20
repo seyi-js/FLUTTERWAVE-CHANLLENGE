@@ -29,3 +29,10 @@ Router.post( '/validate-rule',getDataFromRequest, validateEndpoint,( req, res ) 
 
 
 module.exports = Router;
+
+
+
+
+
+  
+//   console.log(typeof(+('0' + '1')));
